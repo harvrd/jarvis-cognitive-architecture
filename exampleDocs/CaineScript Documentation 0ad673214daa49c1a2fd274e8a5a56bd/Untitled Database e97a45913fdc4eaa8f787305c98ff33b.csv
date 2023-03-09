@@ -1,0 +1,5 @@
+﻿Name,Tags,Description
+Object ID,object-id,
+Rotation Speed X,"float, integer",
+Rotation Speed Y,"float, integer",
+Rotation Speed Z,"float, integer",

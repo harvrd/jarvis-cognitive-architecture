@@ -1,0 +1,7 @@
+﻿Name,Tags,Description
+Object ID,object-id,
+Type,"built-in-name, primitive-name, resource-name",
+Color,color,
+Size,size,
+Position,vector,
+Source,source,

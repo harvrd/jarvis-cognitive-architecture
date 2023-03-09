@@ -1,0 +1,10 @@
+﻿Name,CS Type,Description
+resource-name,string,"the name of a sound file, or prefab, etc."
+primitive-name,string,"“cube”, “sphere”, “cylinder”, “capsule”"
+built-in-name,string,e.g. “button”
+source,string,"Can be built-in, primitive, online, or prefab"
+color,array,Color is an array of comma separated integers/floats representing the RGB
+size,array,(for now) A string of comma separated values  representing the scaling in each direction
+vector,array,a string of comma separated ints or floats representing a position in space
+object-id,string,
+collection-id,string,

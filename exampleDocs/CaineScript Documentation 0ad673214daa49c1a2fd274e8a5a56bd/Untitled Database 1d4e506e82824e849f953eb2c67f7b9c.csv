@@ -1,0 +1,8 @@
+﻿Name,Tags,Description
+Collection ID,collection-id,
+Amount,integer,
+Type,"built-in-name, primitive-name, resource-name",
+Color,color,
+Size,size,
+Position,vector,
+Source,source,

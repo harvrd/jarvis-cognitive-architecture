@@ -1,0 +1,4 @@
+﻿Name,Tags,Description
+Object ID,string,
+Speed,string,"Speed can be “slow”, “medium”, or “fast”"
+Direction,vector,
