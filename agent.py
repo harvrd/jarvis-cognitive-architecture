@@ -28,6 +28,13 @@ def documentation(query: str) -> str:
     result = chain({"question": query})
     return (f"Answer: {result['answer']} Sources: {result['sources']}")
 
+@tool
+def chat(text: str) -> str:
+    """Uses ChatGPT to generate a response to the input text."""
+    gpt3 = OpenAI(model_name="text-davinci-002", n=2, best_of=2)
+    result = gpt3.generate(["Tell me a joke", "Tell me a poem"]*15)
+    return result.generations
+
 # define tools
 search = SerpAPIWrapper()
 
@@ -41,6 +48,12 @@ tools = [
         name = "Documentation",
         func= lambda query: documentation(query),
         description="useful for when you need to answer questions about AtomXR or CaineScript documentation, and general questions about AtomXR. Also good for asking about syntax of functions and methods.",
+        return_direct=True
+    ),
+    Tool(
+        name = "Chat",
+        func= lambda text: chat(text),
+        description="uses ChatGPT to generate a response to the input text",
         return_direct=True
     )
 ]
