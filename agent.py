@@ -1,8 +1,8 @@
 # script that has a general agent that can use tools necessary for the prompt.
 
 from langchain import OpenAI, LLMChain
+from langchain.agents import initialize_agent, ZeroShotAgent, tool, AgentExecutor, Tool, load_tools
 from langchain.prompts import PromptTemplate
-from langchain.agents import initialize_agent, ZeroShotAgent, AgentExecutor, tool, Tool, load_tools
 from langchain.chains.conversation.memory import ConversationBufferMemory
 from langchain.chains import VectorDBQAWithSourcesChain
 from langchain.utilities import SerpAPIWrapper
