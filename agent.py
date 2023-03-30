@@ -1,6 +1,6 @@
 # script that has a general agent that can use tools necessary for the prompt.
 
-from langchain import OpenAI, LLMChain
+from langchain import OpenAI, LLMChain,OpenAIChat
 from langchain.agents import initialize_agent, ZeroShotAgent, tool, AgentExecutor, Tool, load_tools
 from langchain.prompts import PromptTemplate
 from langchain.chains.conversation.memory import ConversationBufferMemory
@@ -25,7 +25,7 @@ store.index = index
 # Pre-processing of the prompt
 CV_caption = "a yellow Labrador retriever playing with a red ball in a grassy field."
 NLP_caption = "could you come up with a name for him? he looks so cute"
-llm = OpenAI(temperature=0.9)
+llm_chat = OpenAIChat(temperature=0,model_name='gpt-3.5-turbo')
 prompt = PromptTemplate(
     input_variables=["CV_caption","NLP_caption"],
     template="""The CV caption is: {CV_caption} 
@@ -36,7 +36,7 @@ prompt = PromptTemplate(
                            ["What is the ____ of the ____?", "Why ______ is doing _____?, "How could ______ [verb]?"]
                             ,no need for answer it, just output the question."""
 )
-chain = LLMChain(llm=llm, prompt=prompt)
+chain = LLMChain(llm=llm_chat, prompt=prompt)
 # Run the chain only specifying the input variable.
 ans = chain.run({"CV_caption":CV_caption,"NLP_caption":NLP_caption})
 print(ans)
