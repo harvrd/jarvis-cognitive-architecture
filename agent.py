@@ -22,24 +22,23 @@ with open("faiss_store.pkl", "rb") as f:
     store = pickle.load(f)
 store.index = index
 
-# Pre-processing of the prompt
-CV_caption = "a yellow Labrador retriever playing with a red ball in a grassy field."
-NLP_caption = "could you come up with a name for him? he looks so cute"
-llm_chat = OpenAIChat(temperature=0,model_name='gpt-3.5-turbo')
-prompt = PromptTemplate(
-    input_variables=["CV_caption","NLP_caption"],
-    template="""The CV caption is: {CV_caption} 
-                           The NLP caption is: {NLP_caption} 
-                           Now Act as a AI agent and summarize two kinds of captions into a meaning ful question:
-                           summarize this two prompt in the format The user is asking for _____ of ______. 
-                           Finally transform the summary into one or multiple of the the question templates 
-                           ["What is the ____ of the ____?", "Why ______ is doing _____?, "How could ______ [verb]?"]
-                            ,no need for answer it, just output the question."""
-)
-chain = LLMChain(llm=llm_chat, prompt=prompt)
-# Run the chain only specifying the input variable.
-ans = chain.run({"CV_caption":CV_caption,"NLP_caption":NLP_caption})
-print(ans)
+# # Pre-processing of the prompt
+# CV_caption = "a yellow Labrador retriever playing with a red ball in a grassy field." ## Sample caption, need to be replaced later
+# NLP_caption = "what kind of dog is that, what do you think." ## Sample caption, need to be replaced later
+# llm = OpenAI(temperature=0.9)
+# prompt = PromptTemplate(
+#     input_variables=["CV_caption","NLP_caption"],
+#     template= """The CV caption is: {CV_caption} 
+#                            The NLP caption is: {NLP_caption} 
+#                            summarize this two prompt in the format The user is asking for _____ of ______. 
+#                            Finally transform the summary into one or multiple of the the question templates 
+#                            ["What is the ____ of the ____?", "Why _____ [verb]?, "How could ______ [verb]?"]
+#                             ,and answer it with more details. format of summary is: Question: _____ Answer:_____"""
+# )
+# chain = LLMChain(llm=llm, prompt=prompt)
+# # Run the chain only specifying the input variable.
+# ans = chain.run({"CV_caption":CV_caption,"NLP_caption":NLP_caption})
+# print(ans)
 
 @tool
 def documentation(query: str) -> str:
@@ -77,6 +76,60 @@ tools = [
         return_direct=True
     )
 ]
+
+# separate episodic vs semantic memory:
+"""
+episodic memory = events (day by day happenings, memories from chat)
+semantic memory = not tied to specific experience (people's emails, birthdays, etc)
+"""
+
+memory_tools = [
+    Tool(
+        name = "AddEpisodicMemory",
+        func= lambda memory: add_episodic_memory(memory),
+        description="useful for when you are adding specific memories or events",
+        return_direct=True
+    ),
+    Tool(
+        name = "AddSemanticMemory",
+        func= lambda memory: add_episodic_memory(memory),
+        description="useful for when you are adding general knowledge or facts not tied to specific events",
+        return_direct=True
+    ),
+    Tool(
+        name = "Chat",
+        func= lambda text: chat(text),
+        description="uses ChatGPT to generate a response to the input text",
+        return_direct=True
+    )
+]
+
+# long term memory updating agent
+@tool
+def add_episodic_memory(memory):
+    with open('episodic_memory.txt', 'a') as file:
+        file.write(memory + '\n')    
+    pass
+
+@tool
+def add_semantic_memory(memory):
+    with open('semantic_memory.txt', 'a') as file:
+        file.write(memory + '\n')    
+    pass
+
+def update_memory(memory):
+    # find memory
+    pass
+# if appending memory
+    # append memory
+# else:
+    # if memory exists:
+        # update memory
+    # else:
+        # append memory
+
+
+
 
 prefix = """Have a conversation with a human, answering the following questions as best you can. You have access to the following tools:"""
 suffix = """Begin!"
