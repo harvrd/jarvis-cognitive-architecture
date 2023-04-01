@@ -1,0 +1,223 @@
+{
+  "description": "flow",
+  "name": "New Flow",
+  "id": "0",
+  "data": {
+    "nodes": [
+      {
+        "width": 384,
+        "height": 391,
+        "id": "dndnode_1",
+        "type": "genericNode",
+        "position": { "x": 137, "y": 147 },
+        "data": {
+          "type": "LLMChain",
+          "node": {
+            "template": {
+              "_type": "llm_chain",
+              "memory": {
+                "type": "BaseMemory",
+                "required": false,
+                "placeholder": "",
+                "list": false,
+                "show": true,
+                "password": false,
+                "multiline": false,
+                "value": null
+              },
+              "verbose": {
+                "type": "bool",
+                "required": false,
+                "placeholder": "",
+                "list": false,
+                "show": false,
+                "password": false,
+                "multiline": false,
+                "value": false
+              },
+              "prompt": {
+                "type": "BasePromptTemplate",
+                "required": true,
+                "placeholder": "",
+                "list": false,
+                "show": true,
+                "password": false,
+                "multiline": false
+              },
+              "llm": {
+                "type": "BaseLanguageModel",
+                "required": true,
+                "placeholder": "",
+                "list": false,
+                "show": true,
+                "password": false,
+                "multiline": false
+              },
+              "output_key": {
+                "type": "str",
+                "required": false,
+                "placeholder": "",
+                "list": false,
+                "show": false,
+                "password": true,
+                "multiline": false,
+                "value": "text"
+              }
+            },
+            "description": "Chain to run queries against LLMs.",
+            "base_classes": ["Chain"]
+          },
+          "id": "dndnode_1",
+          "value": null
+        },
+        "positionAbsolute": { "x": 137, "y": 147 }
+      },
+      {
+        "width": 384,
+        "height": 523,
+        "id": "dndnode_2",
+        "type": "genericNode",
+        "position": { "x": -389.863326232798, "y": -87.45505819255425 },
+        "data": {
+          "type": "FewShotPromptTemplate",
+          "node": {
+            "template": {
+              "_type": "few_shot",
+              "input_variables": {
+                "type": "str",
+                "required": true,
+                "placeholder": "",
+                "list": true,
+                "show": false,
+                "password": false,
+                "multiline": false
+              },
+              "output_parser": {
+                "type": "BaseOutputParser",
+                "required": false,
+                "placeholder": "",
+                "list": false,
+                "show": false,
+                "password": false,
+                "multiline": false,
+                "value": null
+              },
+              "partial_variables": {
+                "type": "dict[str, Union[str, Callable[[], str]]]",
+                "required": false,
+                "placeholder": "",
+                "list": false,
+                "show": false,
+                "password": false,
+                "multiline": false,
+                "value": null
+              },
+              "examples": {
+                "type": "dict",
+                "required": false,
+                "placeholder": "",
+                "list": true,
+                "show": true,
+                "password": false,
+                "multiline": true,
+                "value": null
+              },
+              "example_selector": {
+                "type": "BaseExampleSelector",
+                "required": false,
+                "placeholder": "",
+                "list": false,
+                "show": false,
+                "password": false,
+                "multiline": false,
+                "value": null
+              },
+              "example_prompt": {
+                "type": "PromptTemplate",
+                "required": true,
+                "placeholder": "",
+                "list": false,
+                "show": true,
+                "password": false,
+                "multiline": false
+              },
+              "suffix": {
+                "type": "str",
+                "required": true,
+                "placeholder": "",
+                "list": false,
+                "show": true,
+                "password": false,
+                "multiline": true,
+                "value": "Start chatting!\n"
+              },
+              "example_separator": {
+                "type": "str",
+                "required": false,
+                "placeholder": "",
+                "list": false,
+                "show": false,
+                "password": false,
+                "multiline": false,
+                "value": "\n\n"
+              },
+              "prefix": {
+                "type": "str",
+                "required": false,
+                "placeholder": "",
+                "list": false,
+                "show": true,
+                "password": false,
+                "multiline": true,
+                "value": ""
+              },
+              "template_format": {
+                "type": "str",
+                "required": false,
+                "placeholder": "",
+                "list": false,
+                "show": false,
+                "password": false,
+                "multiline": false,
+                "value": "f-string"
+              },
+              "validate_template": {
+                "type": "bool",
+                "required": false,
+                "placeholder": "",
+                "list": false,
+                "show": false,
+                "password": false,
+                "multiline": false,
+                "value": true
+              }
+            },
+            "description": "Prompt template that contains few shot examples.",
+            "base_classes": ["StringPromptTemplate", "BasePromptTemplate"]
+          },
+          "id": "dndnode_2",
+          "value": null
+        },
+        "selected": false,
+        "positionAbsolute": { "x": -389.863326232798, "y": -87.45505819255425 },
+        "dragging": false
+      }
+    ],
+    "edges": [
+      {
+        "source": "dndnode_2",
+        "sourceHandle": "FewShotPromptTemplate|dndnode_2|StringPromptTemplate|BasePromptTemplate",
+        "target": "dndnode_1",
+        "targetHandle": "BasePromptTemplate|prompt|dndnode_1",
+        "className": "animate-pulse",
+        "id": "reactflow__edge-dndnode_2FewShotPromptTemplate|dndnode_2|StringPromptTemplate|BasePromptTemplate-dndnode_1BasePromptTemplate|prompt|dndnode_1"
+      }
+    ],
+    "viewport": {
+      "x": 577.6360867900341,
+      "y": 186.18434848239585,
+      "zoom": 0.5857228323503465
+    }
+  },
+  "chat": [{ "message": "hello", "isSend": true }, { "isSend": false }]
+}
