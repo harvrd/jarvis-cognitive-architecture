@@ -48,7 +48,7 @@ tools = [
 #         )
 #     )
 # chat_prompt_template = ChatPromptTemplate.from_messages([human_message_prompt])
-llm = ChatOpenAI(temperature=0, openai_api_key='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')
+llm = ChatOpenAI(temperature=0)
 memory = ConversationBufferMemory(memory_key="chat_history", return_messages=True)
 agent_chain = initialize_agent(tools, llm, agent="chat-conversational-react-description", verbose=True, memory=memory)
 
