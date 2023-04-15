@@ -8,13 +8,18 @@ from langchain.prompts.chat import (
 )
 from langchain.utilities import SerpAPIWrapper
 from langchain.memory import ConversationBufferMemory
+import imunCool
 
 
 
 search = SerpAPIWrapper()
 
 tools = [
+    Tool(
+        name = "Get Image Details",
+        func=imunCool.DenseCaptioning(imgPath),
 
+    ),
     # Tool(
     #     name = "Layout Understanding",
     #     func=imun_layout.run,
@@ -24,17 +29,7 @@ tools = [
     #     "This tool can find the actual business card text, name, address, email, website on the card."
     #     "Input should be an image url, or path to an image file (e.g. .jpg, .png)."
     #     )
-    # ),
-    #     Tool(
-    #     name = "OCR Understanding",
-    #     func=imun_read.run,
-    #     description=(
-    #     "A wrapper around OCR Understanding (Optical Character Recognition). "
-    #     "Useful after Image Understanding tool has found text or handwriting is present in the image tags."
-    #     "This tool can find the actual text, written name, or product name in the image."
-    #     "Input should be an image url, or path to an image file (e.g. .jpg, .png)."
-    #     )
-    # ),        
+    # ),      
     Tool(
         name = "search",
         func=search.run,
