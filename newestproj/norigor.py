@@ -12,13 +12,17 @@ import imunCool
 
 
 
-search = SerpAPIWrapper()
+search = SerpAPIWrapper(serpapi_api_key = '1bcb3681fc3084e00e53558d117b152f7102db70869b3afe3f8c5639ac352551')
 
 tools = [
     Tool(
         name = "Get Image Details",
-        func=imunCool.DenseCaptioning(imgPath),
-
+        func=imunCool.DenseCaptioning,
+        description=(
+        "A wrapper around Image Understanding. "
+        "Useful for when you need to understand what is inside an image (objects, texts, people)."
+        "Input should be an image url, or path to an image file (e.g. .jpg, .png)."
+        )
     ),
     # Tool(
     #     name = "Layout Understanding",
@@ -44,11 +48,13 @@ tools = [
 #         )
 #     )
 # chat_prompt_template = ChatPromptTemplate.from_messages([human_message_prompt])
-llm = ChatOpenAI(temperature=0)
+llm = ChatOpenAI(temperature=0, openai_api_key='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')
 memory = ConversationBufferMemory(memory_key="chat_history", return_messages=True)
 agent_chain = initialize_agent(tools, llm, agent="chat-conversational-react-description", verbose=True, memory=memory)
 
 
 # agent_chain.run("what are some good dinners to make this week, if i like thai food?")
 
-agent_chain.run(input="who is Madison Davis")
+while True:
+    print("AI: " + agent_chain.run(input=input("Human: ")))
+# agent_chain.run(input="what's the brand of this soda: /Users/yutongwu/Documents/GitHub/jarvis-cognitive-architecture/newestproj/cola.png")

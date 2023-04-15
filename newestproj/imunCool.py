@@ -11,15 +11,21 @@ import sys
 import time
 
 def DenseCaptioning(imgPath):
-    key = os.environ["subscriptionKeyAzure"]
-    endpoint = "https://jarvis-dense-captioning.cognitiveservices.azure.com/"
-
+    key = '2d3cb8d128e34b73b9e0a49b810449ee'
+    endpoint = "https://ywu4.cognitiveservices.azure.com/"
     creds = CognitiveServicesCredentials(key)
     client = ComputerVisionClient(endpoint, creds)
     with open(imgPath, 'rb') as img:
-        result = client.describe_image_in_stream(img)
-
-    return(result.captions[0].text)
+        result = client.analyze_image_in_stream(img, [VisualFeatureTypes.adult,
+                                                            VisualFeatureTypes.brands,
+                                                            VisualFeatureTypes.categories,
+                                                            VisualFeatureTypes.color,
+                                                            VisualFeatureTypes.description,
+                                                            VisualFeatureTypes.faces,
+                                                            VisualFeatureTypes.image_type,
+                                                            VisualFeatureTypes.objects,
+                                                            VisualFeatureTypes.tags])
+    return(result)
     # do something
     '''
     Authenticate
@@ -77,5 +83,5 @@ def DenseCaptioning(imgPath):
     print("End of Computer Vision quickstart.")
 
 
-result = DenseCaptioning("testocr.png")
-print(result)
+# result = DenseCaptioning("testocr.png")
+# print(result)

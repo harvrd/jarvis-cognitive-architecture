@@ -9,7 +9,7 @@ import os
 AZURE_KEY= os.environ["subscriptionKeyAzure"]
 END_POINT = "https://jarvis-dense-captioning.cognitiveservices.azure.com/"
 
-
+python
 creds = CognitiveServicesCredentials(AZURE_KEY)
 client = ComputerVisionClient(endpoint=END_POINT, credentials=creds)
 
