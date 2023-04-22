@@ -11,8 +11,7 @@ from langchain.memory import ConversationBufferMemory
 import imunCool
 
 
-
-search = SerpAPIWrapper(serpapi_api_key = '1bcb3681fc3084e00e53558d117b152f7102db70869b3afe3f8c5639ac352551')
+search = SerpAPIWrapper()
 
 tools = [
     Tool(
@@ -23,17 +22,7 @@ tools = [
         "Useful for when you need to understand what is inside an image (objects, texts, people)."
         "Input should be an image url, or path to an image file (e.g. .jpg, .png)."
         )
-    ),
-    # Tool(
-    #     name = "Layout Understanding",
-    #     func=imun_layout.run,
-    #     description=(
-    #     "A wrapper around layout and table understanding. "
-    #     "Useful after Image Understanding tool has recognized businesscard in the image tags."
-    #     "This tool can find the actual business card text, name, address, email, website on the card."
-    #     "Input should be an image url, or path to an image file (e.g. .jpg, .png)."
-    #     )
-    # ),      
+    ),     
     Tool(
         name = "search",
         func=search.run,
@@ -41,12 +30,6 @@ tools = [
     )
 ]
 
-# human_message_prompt = HumanMessagePromptTemplate(
-#         prompt=PromptTemplate(
-#             template="You are JARVIS, a personal assistant for Yutong Wu.",
-#             input_variables=["product"],
-#         )
-#     )
 # chat_prompt_template = ChatPromptTemplate.from_messages([human_message_prompt])
 llm = ChatOpenAI(temperature=0)
 memory = ConversationBufferMemory(memory_key="chat_history", return_messages=True)
