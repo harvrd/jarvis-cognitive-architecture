@@ -28,7 +28,7 @@ def DenseCaptioning(imgPath):
                                                             VisualFeatureTypes.image_type,
                                                             VisualFeatureTypes.objects,
                                                             VisualFeatureTypes.tags])
-    return()
+    return result
     # do something
     '''
     Authenticate
