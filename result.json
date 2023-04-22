@@ -1,0 +1,53 @@
+{
+  "additional_properties": {},
+  "categories": [
+    { "name": "others_", "score": 0.03515625 },
+    { "name": "outdoor_", "score": 0.00390625, "detail": { "landmarks": [] } }
+  ],
+  "adult": {
+    "is_adult_content": false,
+    "is_racy_content": false,
+    "is_gory_content": false,
+    "adult_score": 0.0032549265306442976,
+    "racy_score": 0.0038223096635192633,
+    "gore_score": 0.0011176535626873374
+  },
+  "color": {
+    "dominant_color_foreground": "Brown",
+    "dominant_color_background": "Black",
+    "dominant_colors": ["Brown", "Black"],
+    "accent_color": "A86D23",
+    "is_bw_img": false
+  },
+  "image_type": { "clip_art_type": 0, "line_drawing_type": 0 },
+  "tags": [
+    { "name": "cartoon", "confidence": 0.868152916431427 },
+    { "name": "human face", "confidence": 0.857587456703186 },
+    { "name": "indoor", "confidence": 0.6872369050979614 }
+  ],
+  "description": {
+    "tags": [],
+    "captions": [
+      {
+        "text": "a painting of a girl with a cat on her shoulder",
+        "confidence": 0.5052798390388489
+      }
+    ]
+  },
+  "faces": [
+    {
+      "face_rectangle": { "left": 308, "top": 326, "width": 282, "height": 282 }
+    }
+  ],
+  "objects": [
+    {
+      "rectangle": { "x": 610, "y": 348, "w": 372, "h": 316 },
+      "object_property": "animal",
+      "confidence": 0.58
+    }
+  ],
+  "brands": [],
+  "request_id": "aa10bce7-0112-470c-9e9d-bbd12f63ca00",
+  "metadata": { "width": 1024, "height": 1024, "format": "Png" },
+  "model_version": "2021-05-01"
+}
