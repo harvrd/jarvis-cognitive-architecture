@@ -17,7 +17,6 @@ def convert_image_analysis_to_json(image_analysis):
     analysis_dict = {
         'additional_properties': image_analysis.additional_properties,
         'categories': [cat.as_dict() for cat in image_analysis.categories],
-        'adult': image_analysis.adult.as_dict(),
         'color': image_analysis.color.as_dict(),
         'image_type': image_analysis.image_type.as_dict(),
         'tags': [tag.as_dict() for tag in image_analysis.tags],
