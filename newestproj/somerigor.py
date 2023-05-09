@@ -30,4 +30,4 @@ agent_chain = initialize_agent(
 while True:
     print("AI: " + agent_chain.run(input=input("Human: ")))
 # agent_chain.run(input="what's the brand of this soda: /Users/yutongwu/Documents/GitHub/jarvis-cognitive-architecture/newestproj/cola.png")
-# Human: tell me about this image: "https://i.imgur.com/5bGzZi7.jpg"
+# Human: What can you tell me about this image: "https://i.imgur.com/5bGzZi7.jpg"

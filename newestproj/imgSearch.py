@@ -1,6 +1,9 @@
 from serpapi import GoogleSearch
 from bs4 import BeautifulSoup
 import requests
+import key
+
+key = key.key()
 
 def imgSearch(img_url):
     # reverse img search
@@ -9,7 +12,7 @@ def imgSearch(img_url):
     params = {
         "engine": "google_reverse_image",
         "image_url": img_url,
-        "api_key": "e6e58fe1c5b8dc37a294e03f6947b05eab8093aee7001be2729ce26839b40797"
+        "api_key": key
     }
 
     search = GoogleSearch(params)
