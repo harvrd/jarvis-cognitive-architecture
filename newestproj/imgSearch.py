@@ -1,45 +1,49 @@
 from serpapi import GoogleSearch
 from bs4 import BeautifulSoup
 import requests
+from requests.exceptions import RequestException
+from urllib3.exceptions import MaxRetryError
 import key
 
-key = key.key()
+newkey = key.key()
 
 def imgSearch(img_url):
-    # reverse img search
-    # img = "https://i.imgur.com/5bGzZi7.jpg"
-
     params = {
         "engine": "google_reverse_image",
         "image_url": img_url,
-        "api_key": key
+        "api_key": newkey,
+        "gl": "us",
+        "hl": "en",
     }
 
     search = GoogleSearch(params)
     results = search.get_dict()
-    inline_images = results["inline_images"]
-    sources = [image["source"] for image in inline_images]
+    inline_images = results["image_results"]
+    sources = [image["link"] for image in inline_images]
+
+    max_retries = 3
 
     # web scraping
     soups = "Everything in <title> is information about this image: \n"
 
     for source in sources:
-        response = requests.get(source)
-        soup = BeautifulSoup(response.text, 'html.parser')
-        soups += str(soup.title) + "\n"
+        retries = 0
+        while retries < max_retries:
+            try:
+                response = requests.get(source, timeout=10)
+                response.raise_for_status()
+                soup = BeautifulSoup(response.text, 'html.parser')
+                soups += str(soup.title) + "\n"
+                break
+            except (RequestException, MaxRetryError) as e: 
+                retries += 1
+                if retries == max_retries:
+                    print(f"Max retries exceeded for {source}. Skipping...")
+                    break
+                print(f"An error occurred while processing {source}: {e}")
 
     return soups
 
 # write webscrape results
 # with open("soups.txt", "w") as f:
 #     f.write(soups)
-
-# # debugging
-# # write sources
-# with open("sources.txt", "w") as f:
-#     f.write(json.dumps(sources))
-
-# # write inline_images
-# with open("images.txt", "w") as f:
-#     f.write(json.dumps(inline_images))
-

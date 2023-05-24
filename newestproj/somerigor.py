@@ -4,11 +4,20 @@ from langchain.agents import Tool
 from langchain.utilities import SerpAPIWrapper
 from langchain.memory import ConversationBufferMemory
 import imgSearch
-
+# import imunCool
 
 search = SerpAPIWrapper()
 
 tools = [
+    # Tool(
+    #     name="Get Image Details",
+    #     func=imunCool.DenseCaptioning,
+    #     description=(
+    #         "A wrapper around Image Understanding. "
+    #         "Useful for when you need to understand what is inside an image (objects, texts, people)."
+    #         "Input should be an image url, or path to an image file (e.g. .jpg, .png)."
+    #     )
+    # ),
     Tool(
         name="Reverse Image Search",
         func=imgSearch.imgSearch,
@@ -30,4 +39,4 @@ agent_chain = initialize_agent(
 while True:
     print("AI: " + agent_chain.run(input=input("Human: ")))
 # agent_chain.run(input="what's the brand of this soda: /Users/yutongwu/Documents/GitHub/jarvis-cognitive-architecture/newestproj/cola.png")
-# Human: What can you tell me about this image: "https://i.imgur.com/5bGzZi7.jpg"
+# Human: What can you tell me about this image: https://i.imgur.com/TVSIyzx.jpg

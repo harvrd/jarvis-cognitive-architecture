@@ -1,0 +1,20 @@
+Observation: Everything in <title> is information about this image: 
+<title>Varjo XR-3 - The industry’s highest resolution mixed reality headset | Varjo</title>
+<title>Varjo XR-3 | Varjo Store for professionals</title>
+<title>Mixed Reality Training | Varjo XR-3 Focal Edition</title>
+<title>Varjo's lidar-enabled XR-3 VR headset shows where VR and AR are bound to blend - CNET</title>
+<title>Varjo XR-3: Mixed Reality Headset for Professionals | Knoxlabs VR Marketplace</title>
+<title>Video Pass-Through Mixed Reality Changes Reality As You Know It – Varjo</title>
+
+Thought:```json
+{
+    "action": "Final Answer",
+    "action_input": "The image you provided is of the Varjo XR-3, which is the industry's highest resolution mixed reality headset. It is designed for professionals and offers advanced features for mixed reality training and other applications. The Varjo XR-3 is also equipped with lidar technology, which allows for more accurate and immersive experiences in both virtual and augmented reality environments."
+}
+```
+
+> Finished chain.
+AI: The image you provided is of the Varjo XR-3, which is the industry's highest resolution mixed reality headset. It is designed for professionals and offers advanced features for mixed reality training and other applications. The Varjo XR-3 is also equipped with lidar technology, which allows for more accurate and immersive experiences in both virtual and augmented reality environments.
+Human: 
+
+Human: What can you tell me about this image: https://i.imgur.com/TVSIyzx.jpg
