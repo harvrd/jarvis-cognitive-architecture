@@ -27,7 +27,17 @@ tools = [
         name="Search",
         func=search.run,
         description="Useful when you want to answer questions about current events or things found online"
-    )
+    ),
+    # Tool(
+    #     name="Price Compare",
+    #     func=search.run,
+    #     description="Useful when you want to compare prices from local stores"
+    # ),
+    # Tool(
+    #     name="Find",
+    #     func=search.run,
+    #     description="Useful when you want to compare prices from local stores"
+    # )
 ]
 
 llm = ChatOpenAI(temperature=0)
@@ -40,3 +50,4 @@ while True:
     print("AI: " + agent_chain.run(input=input("Human: ")))
 # agent_chain.run(input="what's the brand of this soda: /Users/yutongwu/Documents/GitHub/jarvis-cognitive-architecture/newestproj/cola.png")
 # Human: What can you tell me about this image: https://i.imgur.com/TVSIyzx.jpg
+# https://i.imgur.com/Q1qEGPq.jpg

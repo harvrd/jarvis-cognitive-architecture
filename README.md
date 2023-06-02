@@ -9,4 +9,5 @@ Taking a bunch of raw data from CV/NLP captions into a structure of reliable, un
 * Long Term Memory (AnhPhu)
 * ChatGPT (Yutong)
 * Google Search (AnhPhu)
+* Reverse Image Search (Alina)
 * Visualization

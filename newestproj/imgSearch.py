@@ -18,8 +18,8 @@ def imgSearch(img_url):
 
     search = GoogleSearch(params)
     results = search.get_dict()
-    inline_images = results["image_results"]
-    sources = [image["link"] for image in inline_images]
+    image_results = results["image_results"]
+    sources = [image["link"] for image in image_results]
 
     max_retries = 3
 
